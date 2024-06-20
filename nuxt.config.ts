@@ -18,5 +18,5 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxt/eslint'],
+  modules: ['@nuxt/eslint', '@pinia/nuxt'],
 });

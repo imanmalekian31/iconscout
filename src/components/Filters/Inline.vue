@@ -1,0 +1,88 @@
+<script setup>
+import {
+  AdjustmentsHorizontalIcon,
+  XMarkIcon,
+} from '@heroicons/vue/24/outline';
+
+const layoutStore = useLayoutStore();
+const route = useRoute();
+
+const getLinkWithQueryParams = (path) => {
+  const availableQueries = new URLSearchParams(route.query);
+  return `${path}?${availableQueries}`;
+};
+
+const TABS = [
+  {
+    name: 'All Assets',
+    path: '/',
+  },
+  {
+    name: '3D Illustrations',
+    path: '/3d-illustrations',
+  },
+  {
+    name: 'Lottie Animations',
+    path: '/animations',
+  },
+  {
+    name: 'Illustrations',
+    path: '/illustrations',
+  },
+  {
+    name: 'Icons',
+    path: '/icons',
+  },
+];
+</script>
+
+<template>
+  <div
+    class="bg-[#FAFAFC] border-b border-[#EBEDF5] z-30 sticky top-[140px] xl:top-20 px-6 hidden lg:block"
+  >
+    <div class="flex items-center">
+      <div
+        :class="[
+          'flex justify-between flex-grow mr-6 border-r border-[#EBEDF5] cursor-pointer',
+          layoutStore.toggleSidebar ? 'max-w-[236px]' : 'max-w-[120px]',
+        ]"
+        @click="layoutStore.toggleSidebar = !layoutStore.toggleSidebar"
+      >
+        <button class="font-semibold py-3">
+          <AdjustmentsHorizontalIcon class="size-6 inline" />
+          Filters
+        </button>
+        <button
+          v-if="layoutStore.toggleSidebar"
+          aria-label="Close sidebar"
+          class="mr-5"
+        >
+          <XMarkIcon class="size-5" />
+        </button>
+      </div>
+      <ul class="flex space-x-6 list-none p-0 mb-0">
+        <template v-for="tab in TABS" :key="tab.path">
+          <li class="tabListItem">
+            <NuxtLink :to="getLinkWithQueryParams(tab.path)">
+              {{ tab.name }}
+            </NuxtLink>
+          </li>
+        </template>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.tabListItem {
+  @apply font-semibold;
+
+  a {
+    @apply text-blue-600 pb-3.5;
+
+    &.router-link-active {
+      @apply text-black border-b-2 border-black;
+    }
+  }
+}
+</style>

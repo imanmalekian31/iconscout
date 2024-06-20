@@ -1,9 +1,3 @@
-<template>
-  <div>
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
-  </div>
-</template>
-
 <script setup lang="ts">
 useHead({
   title: 'Shape Design Assets - Free in SVG, PNG, BLEND, GIF | IconScout',
@@ -16,3 +10,15 @@ useHead({
   ],
 });
 </script>
+
+<template>
+  <main>
+    <FiltersInline />
+    <div class="flex">
+      <FiltersSidebar />
+      <section class="h-screen">
+        {{ $route.params.type }}
+      </section>
+    </div>
+  </main>
+</template>
