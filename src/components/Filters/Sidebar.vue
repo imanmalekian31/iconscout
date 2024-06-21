@@ -2,18 +2,21 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import { ChevronDownIcon } from '@heroicons/vue/24/outline';
 
-const layoutStore = useLayoutStore();
+import type { SidebarOption } from '~/types';
 
-const filters = [
+const layoutStore = useLayoutStore();
+const filterStore = useFiltersStore();
+
+const filters: SidebarOption[] = [
   {
-    name: 'assetType',
+    name: 'asset',
     title: 'Asset Type',
     options: [
       { id: 'all', title: 'All Assets' },
       { id: 'lottie', title: 'Lottie Animations' },
       { id: '3d', title: '3D Illustrations' },
-      { id: '3d-illustrations', title: 'Illustrations' },
-      { id: 'assetType', title: 'Icons' },
+      { id: 'illustration', title: 'Illustrations' },
+      { id: 'icon', title: 'Icons' },
     ],
   },
   {
@@ -26,7 +29,7 @@ const filters = [
     ],
   },
   {
-    name: 'sortBy',
+    name: 'sort',
     title: 'Sort by',
     options: [
       { id: 'popular', title: 'Popular' },
@@ -82,8 +85,10 @@ const filters = [
                   class="flex items-center mx-6 mb-3"
                 >
                   <input
+                    v-model="filterStore.filters[filter.name]"
                     :id="option.id"
-                    name="asset-type"
+                    :name="filter.name"
+                    :value="option.id"
                     type="radio"
                     class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                   />

@@ -1,39 +1,29 @@
-<script setup>
+<script setup lang="ts">
 import {
   AdjustmentsHorizontalIcon,
   XMarkIcon,
 } from '@heroicons/vue/24/outline';
 
+import { TABS } from './constants';
+
 const layoutStore = useLayoutStore();
+const filterStore = useFiltersStore();
 const route = useRoute();
 
-const getLinkWithQueryParams = (path) => {
-  const availableQueries = new URLSearchParams(route.query);
-  return `${path}?${availableQueries}`;
-};
+watch(
+  route,
+  (newVal) => {
+    if (newVal.name === 'type') {
+      const queryType = Array.isArray(newVal.params.type)
+        ? route.params.type[0]
+        : route.params.type;
 
-const TABS = [
-  {
-    name: 'All Assets',
-    path: '/',
+      filterStore.filters.asset =
+        TABS.find((tab) => tab.path === queryType)?.id || 'all';
+    }
   },
-  {
-    name: '3D Illustrations',
-    path: '/3d-illustrations',
-  },
-  {
-    name: 'Lottie Animations',
-    path: '/animations',
-  },
-  {
-    name: 'Illustrations',
-    path: '/illustrations',
-  },
-  {
-    name: 'Icons',
-    path: '/icons',
-  },
-];
+  { deep: true, immediate: true }
+);
 </script>
 
 <template>
@@ -63,7 +53,13 @@ const TABS = [
       <ul class="flex space-x-6 list-none p-0 mb-0">
         <template v-for="tab in TABS" :key="tab.path">
           <li class="tabListItem">
-            <NuxtLink :to="getLinkWithQueryParams(tab.path)">
+            <NuxtLink
+              :to="{
+                name: 'type',
+                params: { type: tab.path },
+                query: { ...route.query },
+              }"
+            >
               {{ tab.name }}
             </NuxtLink>
           </li>
