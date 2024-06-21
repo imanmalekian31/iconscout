@@ -20,7 +20,7 @@ import {
         </li>
         <li class="mr-4">
           <NuxtLink to="/">
-            <img src="/images/logo.svg" alt="logo" class="w-48 h-11" />
+            <SvgoLogo filled class="!mb-0 !w-48 !h-11" />
           </NuxtLink>
         </li>
         <li class="hidden xl:block mx-4">
@@ -47,12 +47,7 @@ import {
           <button
             class="text-gray-800 font-semibold border-none bg-none hover:text-blue-600"
           >
-            <img
-              src="/images/gift.svg"
-              class="inline size-6"
-              loading="lazy"
-              alt="gift"
-            />
+            <SvgoGift filled class="inline !mb-0 mr-1 text-2xl" />
             Free Asset
           </button>
           <button

@@ -27,14 +27,9 @@ import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
       </div>
       <button
         type="submit"
-        class="flex items-center justify-center size-8 rounded bg-[#FAFAFC]"
+        class="flex items-center justify-center size-8 rounded bg-[#F5F6FA] hover:bg-[#D8DBEB]"
       >
-        <img
-          src="/images/reverse-search-picture.svg"
-          width="18"
-          height="18"
-          alt="search-picture-btn"
-        />
+        <SvgoReverseSearchPicture filled class="!mb-0 text-lg" />
       </button>
     </form>
   </div>
