@@ -7,8 +7,6 @@ import type {
   sortType,
 } from '~/types';
 
-import { IdToPath } from '../components/filters/constants';
-
 export const useFiltersStore = defineStore('filters', () => {
   const router = useRouter();
   const route = useRoute();
@@ -54,7 +52,13 @@ export const useFiltersStore = defineStore('filters', () => {
       router.push({
         name: 'type',
         params: {
-          type: IdToPath[newVal.asset],
+          type: {
+            all: '',
+            lottie: 'animations',
+            '3d': '3d-illustrations',
+            illustration: 'illustrations',
+            icon: 'icons',
+          }[newVal.asset],
         },
         query: { ...route.query },
       });
