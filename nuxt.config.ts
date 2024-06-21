@@ -19,4 +19,11 @@ export default defineNuxtConfig({
   },
 
   modules: ['@nuxt/eslint', '@pinia/nuxt'],
+  runtimeConfig: {
+    public: {
+      apiBase: '',
+      iconscoutClientId: '',
+      iconscoutClientSecret: '',
+    },
+  },
 });
