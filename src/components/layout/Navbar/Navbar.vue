@@ -86,11 +86,3 @@ import {
     </nav>
   </header>
 </template>
-
-<style scoped>
-@media (min-width: 768px) {
-  .signup {
-    @apply w-auto h-auto rounded-full;
-  }
-}
-</style>
