@@ -1,5 +1,4 @@
 import { fetchAssetsListAPI } from '~/apis';
-import { IdToPath } from '~/components/filters/constants';
 import type {
   Asset,
   AssetType,
@@ -7,6 +6,8 @@ import type {
   PriceType,
   sortType,
 } from '~/types';
+
+import { IdToPath } from '../components/filters/constants';
 
 export const useFiltersStore = defineStore('filters', () => {
   const router = useRouter();
@@ -69,5 +70,6 @@ export const useFiltersStore = defineStore('filters', () => {
 
   return {
     filters,
+    assetsList,
   };
 });
