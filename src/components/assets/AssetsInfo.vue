@@ -3,7 +3,7 @@ const filterStore = useFiltersStore();
 </script>
 
 <template>
-  <div class="py-8 px-6 bg-[#FAFAFC]">
+  <div class="py-8 px-6 bg-gray-50">
     <h1 class="text-2xl xl:text-4xl font-bold mb-1">
       {{ filterStore.totalAssets.toLocaleString() }} Limit
       {{

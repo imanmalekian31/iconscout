@@ -107,11 +107,11 @@ const filters: SidebarOption[] = [
               leave-from-class="transform scale-100 opacity-100"
               leave-to-class="transform scale-95 opacity-0"
             >
-              <DisclosurePanel>
+              <DisclosurePanel class="px-6 mb-5">
                 <div
                   v-for="option in filter.options"
                   :key="option.id"
-                  class="flex items-center mx-6 mb-3"
+                  class="i-radio mb-3"
                 >
                   <input
                     v-model="filterStore.filters[filter.name]"
@@ -119,12 +119,8 @@ const filters: SidebarOption[] = [
                     :name="filter.name"
                     :value="option.id"
                     type="radio"
-                    class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                   />
-                  <label
-                    :for="option.id"
-                    class="ml-3 block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
-                  >
+                  <label :for="option.id">
                     {{ option.title }}
                   </label>
                 </div>

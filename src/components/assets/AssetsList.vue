@@ -36,7 +36,7 @@ function getSrcSet(urls: Asset['urls']) {
       v-for="assetItem in filterStore.assetsList"
       :key="assetItem.id"
       :class="
-        filterStore.filters.asset === 'lottie' ? '!bg-white' : '!bg-[#FAFAFC]'
+        filterStore.filters.asset === 'lottie' ? '!bg-white' : '!bg-gray-50'
       "
     >
       <picture v-if="filterStore.filters.asset !== 'lottie'">
@@ -72,6 +72,7 @@ function getSrcSet(urls: Asset['urls']) {
   gap: 0.25rem;
 
   article {
+    @apply bg-gray-50;
     position: relative;
     display: flex;
     justify-content: center;
@@ -79,7 +80,6 @@ function getSrcSet(urls: Asset['urls']) {
     min-width: 140px;
     min-height: 140px;
     border-radius: 0.5rem;
-    background-color: #fafafc;
     cursor: pointer;
 
     img {
@@ -132,6 +132,7 @@ function getSrcSet(urls: Asset['urls']) {
   gap: 0.75rem;
 
   article {
+    @apply bg-gray-50;
     position: relative;
     display: flex;
     justify-content: center;
@@ -139,7 +140,6 @@ function getSrcSet(urls: Asset['urls']) {
     height: 13.125rem;
     padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
-    background-color: #fafafc;
     overflow: hidden;
     cursor: pointer;
 

@@ -35,7 +35,7 @@ watch(
 
 <template>
   <div
-    class="bg-[#FAFAFC] border-b border-[#EBEDF5] z-30 sticky top-[140px] xl:top-20 px-6 hidden lg:block"
+    class="bg-gray-50 border-b border-[#EBEDF5] z-30 sticky top-[140px] xl:top-20 px-6 hidden lg:block"
   >
     <div class="flex items-center">
       <div
