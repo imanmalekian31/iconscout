@@ -7,7 +7,6 @@ export interface FetchAssetsParams {
   asset?: AssetType;
   price?: PriceType;
   sort?: sortType;
-  reset?: boolean;
 }
 
 export interface AssetResponse {
