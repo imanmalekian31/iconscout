@@ -7,19 +7,28 @@ import type {
   sortType,
 } from '~/types';
 
+interface Filters {
+  asset: AssetType;
+  sort?: sortType;
+  price?: PriceType;
+  page: number;
+  dotlottie: boolean;
+}
+
 export const useFiltersStore = defineStore('filters', () => {
   const router = useRouter();
   const route = useRoute();
 
   const assetsList = ref<Asset[]>([]);
+  const totalAssets = ref(0);
   const isLoading = ref(false);
-  const filters = ref<{ asset: AssetType; sort?: sortType; price?: PriceType }>(
-    {
-      asset: 'all',
-      price: 'all',
-      sort: 'relevant',
-    }
-  );
+  const filters = ref<Filters>({
+    asset: 'all',
+    price: 'free',
+    sort: 'relevant',
+    page: 0,
+    dotlottie: false,
+  });
 
   async function fetchAssets({
     query,
@@ -32,7 +41,7 @@ export const useFiltersStore = defineStore('filters', () => {
     isLoading.value = true;
 
     fetchAssetsListAPI({
-      page: page,
+      page: page || 1,
       per_page: per_page,
       asset: asset === 'all' ? undefined : asset,
       price: price === 'all' ? undefined : price,
@@ -41,8 +50,17 @@ export const useFiltersStore = defineStore('filters', () => {
     })
       .then((data) => {
         assetsList.value.push(...data.response.items.data);
+        totalAssets.value = data.response.items.total;
       })
-      .finally(() => (isLoading.value = false));
+      .finally(() => {
+        isLoading.value = false;
+      });
+  }
+
+  function fetchNextPage() {
+    if (!isLoading.value) {
+      filters.value.page += 1;
+    }
   }
 
   watch(
@@ -65,8 +83,7 @@ export const useFiltersStore = defineStore('filters', () => {
 
       fetchAssets({
         ...newVal,
-        per_page: 30,
-        page: 1,
+        per_page: ['all', 'icon'].includes(newVal.asset) ? 30 : 18,
       });
     },
     { deep: true }
@@ -75,5 +92,8 @@ export const useFiltersStore = defineStore('filters', () => {
   return {
     filters,
     assetsList,
+    fetchNextPage,
+    isLoading,
+    totalAssets,
   };
 });

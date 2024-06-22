@@ -762,6 +762,18 @@
   resolved "https://registry.yarnpkg.com/@kwsites/promise-deferred/-/promise-deferred-1.1.1.tgz#8ace5259254426ccef57f3175bc64ed7095ed919"
   integrity sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==
 
+"@lottiefiles/dotlottie-vue@^0.3.6":
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/@lottiefiles/dotlottie-vue/-/dotlottie-vue-0.3.6.tgz#634719f2c3f3ad6b494f06de96d7387d497a699f"
+  integrity sha512-mqJZ46YPyhM/TtbMUPdmucbSLaxq8f3sPrEhV5AOljFtcElC0cmHOwymcZ1r0foa+FfDDuHdCkE8543Gw05IZQ==
+  dependencies:
+    "@lottiefiles/dotlottie-web" "0.25.0"
+
+"@lottiefiles/dotlottie-web@0.25.0":
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/@lottiefiles/dotlottie-web/-/dotlottie-web-0.25.0.tgz#d06c3496deb5116536d94a5b99dcf30d47fad9f0"
+  integrity sha512-k+4tTckmy7y319qY4AlZiLm4dP95KLXfZd1l1jbss0qX/eyV4KKT+4iLuBfhoFSljfXmM15Oma+e8d663CHPyA==
+
 "@mapbox/node-pre-gyp@^1.0.5":
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/@mapbox/node-pre-gyp/-/node-pre-gyp-1.0.11.tgz#417db42b7f5323d79e93b34a6d7a2a12c0df43fa"
@@ -3465,7 +3477,7 @@ externality@^1.0.2:
     pathe "^1.1.1"
     ufo "^1.1.2"
 
-fast-deep-equal@^3.1.1:
+fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
@@ -4419,6 +4431,11 @@ lodash@^4.17.15, lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+
+lottie-web@5.12.2:
+  version "5.12.2"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.12.2.tgz#579ca9fe6d3fd9e352571edd3c0be162492f68e5"
+  integrity sha512-uvhvYPC8kGPjXT3MyKMrL3JitEAmDMp30lVkuq/590Mw9ok6pWcFCwXJveo0t5uqYw1UREQHofD+jVpdjBv8wg==
 
 lru-cache@^10.0.1, lru-cache@^10.2.0:
   version "10.2.2"
@@ -6959,6 +6976,15 @@ vue-virtual-scroller@2.0.0-beta.8:
     mitt "^2.1.0"
     vue-observe-visibility "^2.0.0-alpha.1"
     vue-resize "^2.0.0-alpha.1"
+
+vue3-lottie@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-3.3.0.tgz#4ece1eff80d7eecc05bda4f28657baceb88f89a4"
+  integrity sha512-Omv26YN3e78fh0QgQooeZcmPo8O2j5mJ5pacZh1mGdHH9ZTGayWlY1Yp6h+wAvfBKAvJ80JXrSgeBOKA4MRBYA==
+  dependencies:
+    fast-deep-equal "^3.1.3"
+    klona "^2.0.6"
+    lottie-web "5.12.2"
 
 vue@^3.4.29:
   version "3.4.29"
