@@ -1,0 +1,43 @@
+.i-radio {
+  @apply flex items-center relative;
+
+  label {
+    @apply pl-6;
+    @apply text-sm font-medium;
+    @apply cursor-pointer;
+
+    &:before {
+      @apply size-4 absolute top-0.5 left-0;
+      @apply border border-[#8F95B2];
+      @apply rounded-full;
+      @apply content-[''];
+    }
+
+    &:after {
+      @apply size-2 absolute top-1.5 left-1;
+      @apply rounded-full;
+      @apply content-[''];
+    }
+  }
+
+  input {
+    @apply size-0 absolute;
+    @apply border-none;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:checked {
+      & + label {
+        &:before {
+          @apply text-blue-500 border-blue-500;
+        }
+
+        &:after {
+          @apply bg-blue-500;
+        }
+      }
+    }
+  }
+}

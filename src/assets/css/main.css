@@ -1,10 +1,13 @@
 @import 'fonts.css';
 
+/* components */
+@import './components/radio.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
+  @apply bg-gray-50;
   font-family: 'Averta', sans-serif;
-  background-color: #fafafc;
 }
