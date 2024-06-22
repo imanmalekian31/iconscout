@@ -9,16 +9,25 @@ useHead({
     },
   ],
 });
+
+const filterStore = useFiltersStore();
 </script>
 
 <template>
+  <AssetsInfo />
+
   <main>
     <FiltersInline />
     <div class="flex">
       <FiltersSidebar />
-      <section class="h-screen">
-        {{ $route.params.type }}
-      </section>
+      <div
+        :class="[
+          'flex flex-col w-full',
+          { 'bg-white': filterStore.filters.asset !== 'lottie' },
+        ]"
+      >
+        <AssetsList />
+      </div>
     </div>
   </main>
 </template>
