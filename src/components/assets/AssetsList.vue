@@ -3,6 +3,7 @@ import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
 
 import type { Asset } from '~/types';
 
+const layoutStore = useLayoutStore();
 const filterStore = useFiltersStore();
 const { observer } = useInfiniteScroll(loadMore);
 
@@ -49,7 +50,7 @@ function getSrcSet(urls: Asset['urls']) {
 
       <template v-else-if="'original' in assetItem.urls">
         <DotLottieVue
-          v-if="filterStore.filters.dotlottie"
+          v-if="layoutStore.toggleDotLottie"
           style="height: 500px; width: 500px"
           autoplay
           loop

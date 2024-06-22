@@ -12,7 +12,6 @@ interface Filters {
   sort?: sortType;
   price?: PriceType;
   page: number;
-  dotlottie: boolean;
 }
 
 export const useFiltersStore = defineStore('filters', () => {
@@ -27,7 +26,6 @@ export const useFiltersStore = defineStore('filters', () => {
     price: 'free',
     sort: 'relevant',
     page: 0,
-    dotlottie: false,
   });
 
   async function fetchAssets({
