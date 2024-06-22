@@ -37,7 +37,7 @@ export interface Asset {
   slug: string;
   price: number;
   _score: number;
-  urls: Urls;
+  urls: Urls | Thumb;
   color_codes: ColorCode[];
 }
 
@@ -45,6 +45,11 @@ export interface Urls {
   png_64: string;
   png_128: string;
   png_256: string;
+}
+
+export interface Thumb {
+  thumb: string;
+  original?: string;
 }
 
 export interface ColorCode {
