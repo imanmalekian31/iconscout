@@ -10,6 +10,14 @@ const layoutStore = useLayoutStore();
 const filterStore = useFiltersStore();
 const route = useRoute();
 
+function resetList(type: string) {
+  filterStore.filters.asset =
+    TABS.find((tab) => tab.path === type)?.id || 'all';
+
+  filterStore.assetsList = [];
+  filterStore.filters.page = 0;
+}
+
 watch(
   route,
   (newVal) => {
@@ -18,8 +26,7 @@ watch(
         ? route.params.type[0]
         : route.params.type;
 
-      filterStore.filters.asset =
-        TABS.find((tab) => tab.path === queryType)?.id || 'all';
+      resetList(queryType as string);
     }
   },
   { deep: true, immediate: true }
