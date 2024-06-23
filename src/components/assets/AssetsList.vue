@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
+import { Vue3Lottie } from 'vue3-lottie';
 
 import type { Asset } from '~/types';
 
@@ -27,13 +28,13 @@ function getSrcSet(urls: Asset['urls']) {
       'w-full p-5',
     ]"
   >
-    <template v-if="!filterStore.assetsList.length">
+    <template v-if="!filterStore.assets.data.length">
       <article v-for="i in 42" :key="i" class="animate-pulse !bg-gray-200" />
     </template>
 
     <article
       v-else
-      v-for="assetItem in filterStore.assetsList"
+      v-for="assetItem in filterStore.assets.data"
       :key="assetItem.id"
       :class="
         filterStore.filters.asset === 'lottie' ? '!bg-white' : '!bg-gray-50'
@@ -56,7 +57,9 @@ function getSrcSet(urls: Asset['urls']) {
           loop
           :src="assetItem.urls.original"
         />
-        <Vue3Lottie v-else :animationLink="assetItem.urls.original" />
+        <ClientOnly v-else>
+          <Vue3Lottie :animationLink="assetItem.urls.original" />
+        </ClientOnly>
       </template>
     </article>
   </section>
