@@ -4,28 +4,37 @@ import type {
   AssetType,
   FetchAssetsParams,
   PriceType,
-  sortType,
+  SortType,
 } from '~/types';
 
 interface Filters {
   asset: AssetType;
-  sort?: sortType;
-  price?: PriceType;
-  page: number;
+  sort: SortType;
+  price: PriceType;
 }
+
+const PER_PAGE: Record<AssetType, number> = {
+  all: 30,
+  icon: 30,
+  lottie: 18,
+  '3d': 18,
+  illustration: 18,
+};
 
 export const useFiltersStore = defineStore('filters', () => {
   const router = useRouter();
   const route = useRoute();
 
-  const assetsList = ref<Asset[]>([]);
-  const totalAssets = ref(0);
-  const isLoading = ref(false);
+  const assets = reactive<{ data: Asset[]; count: number }>({
+    data: [],
+    count: 0,
+  });
+  const loading = ref(false);
+  const page = ref(0);
   const filters = ref<Filters>({
     asset: 'all',
     price: 'free',
     sort: 'relevant',
-    page: 0,
   });
 
   async function fetchAssets({
@@ -33,38 +42,45 @@ export const useFiltersStore = defineStore('filters', () => {
     asset,
     price,
     sort,
-    page,
+    page = 1,
     per_page,
   }: FetchAssetsParams) {
-    isLoading.value = true;
+    loading.value = true;
 
-    fetchAssetsListAPI({
-      page: page || 1,
-      per_page: per_page,
-      asset: asset === 'all' ? undefined : asset,
-      price: price === 'all' ? undefined : price,
-      sort: sort,
-      query: query,
-    })
-      .then((data) => {
-        assetsList.value.push(...data.response.items.data);
-        totalAssets.value = data.response.items.total;
-      })
-      .finally(() => {
-        isLoading.value = false;
+    try {
+      const data = await fetchAssetsListAPI({
+        page,
+        per_page: per_page || PER_PAGE[asset!],
+        asset: asset === 'all' ? undefined : asset,
+        price: price === 'all' ? undefined : price,
+        sort,
+        query,
       });
+
+      assets.data.push(...data.response.items.data);
+      assets.count = data.response.items.total;
+    } catch (error) {
+      console.error('Error loading assets:', error);
+    } finally {
+      loading.value = false;
+    }
   }
 
   function fetchNextPage() {
-    if (!isLoading.value) {
-      filters.value.page += 1;
+    if (!loading.value && page.value) {
+      page.value += 1;
+
+      fetchAssets({
+        ...filters.value,
+        page: page.value,
+        per_page: PER_PAGE[filters.value.asset],
+      });
     }
   }
 
   watch(
     filters,
     (newVal) => {
-      // change route with change asset type filter
       router.push({
         name: 'type',
         params: {
@@ -79,9 +95,13 @@ export const useFiltersStore = defineStore('filters', () => {
         query: { ...route.query },
       });
 
+      assets.data = [];
+      page.value = 1;
+
       fetchAssets({
         ...newVal,
-        per_page: ['all', 'icon'].includes(newVal.asset) ? 30 : 18,
+        page: page.value,
+        per_page: PER_PAGE[newVal.asset],
       });
     },
     { deep: true }
@@ -89,9 +109,9 @@ export const useFiltersStore = defineStore('filters', () => {
 
   return {
     filters,
-    assetsList,
+    assets,
     fetchNextPage,
-    isLoading,
-    totalAssets,
+    page,
+    loading,
   };
 });

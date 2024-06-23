@@ -13,9 +13,6 @@ const route = useRoute();
 function resetList(type: string) {
   filterStore.filters.asset =
     TABS.find((tab) => tab.path === type)?.id || 'all';
-
-  filterStore.assetsList = [];
-  filterStore.filters.page = 0;
 }
 
 watch(

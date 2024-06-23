@@ -5,7 +5,11 @@ const filterStore = useFiltersStore();
 <template>
   <div class="py-8 px-6 bg-gray-50">
     <h1 class="text-2xl xl:text-4xl font-bold mb-1">
-      {{ filterStore.totalAssets.toLocaleString() }} Limit
+      {{
+        filterStore.loading
+          ? 'Searching for'
+          : `${filterStore.assets.count.toLocaleString()} Limit`
+      }}
       {{
         {
           all: 'Design Assets',
@@ -17,7 +21,7 @@ const filterStore = useFiltersStore();
       }}
     </h1>
     <div class="text-sm text-[#5A607D] truncate">
-      {{ filterStore.totalAssets.toLocaleString() }}
+      {{ filterStore.assets.count.toLocaleString() }}
       {{ ['all', 'icon'].includes(filterStore.filters.asset) ? '2D' : '3D' }}s
       exclusively selected by our designer community.
     </div>
