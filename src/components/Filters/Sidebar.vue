@@ -110,17 +110,17 @@ const filters: SidebarOption[] = [
               <DisclosurePanel class="px-6 mb-5">
                 <div
                   v-for="option in filter.options"
-                  :key="option.id"
+                  :key="`${filter.name}-${option.id}`"
                   class="i-radio mb-3"
                 >
                   <input
                     v-model="filterStore.filters[filter.name]"
-                    :id="option.id"
+                    :id="`${filter.name}-${option.id}`"
                     :name="filter.name"
                     :value="option.id"
                     type="radio"
                   />
-                  <label :for="option.id">
+                  <label :for="`${filter.name}-${option.id}`">
                     {{ option.title }}
                   </label>
                 </div>
