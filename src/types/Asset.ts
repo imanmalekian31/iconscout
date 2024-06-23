@@ -1,4 +1,4 @@
-import type { AssetType, PriceType, sortType } from './Filter';
+import type { AssetType, PriceType, SortType } from './Filter';
 
 export interface FetchAssetsParams {
   page: number;
@@ -6,7 +6,7 @@ export interface FetchAssetsParams {
   query?: string;
   asset?: AssetType;
   price?: PriceType;
-  sort?: sortType;
+  sort?: SortType;
 }
 
 export interface AssetResponse {

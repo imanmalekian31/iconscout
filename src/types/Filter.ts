@@ -1,6 +1,6 @@
 export type AssetType = 'lottie' | '3d' | 'illustration' | 'icon' | 'all';
 export type PriceType = 'free' | 'premium' | 'all';
-export type sortType = 'popular' | 'latest' | 'featured' | 'relevant';
+export type SortType = 'popular' | 'latest' | 'featured' | 'relevant';
 
 export interface SidebarOption {
   name: 'asset' | 'price' | 'sort';
