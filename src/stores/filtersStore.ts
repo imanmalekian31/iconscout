@@ -32,9 +32,9 @@ export const useFiltersStore = defineStore('filters', () => {
   const loading = ref(false);
   const page = ref(0);
   const filters = ref<Filters>({
-    asset: 'all',
-    price: 'free',
-    sort: 'relevant',
+    asset: (safeQueryGuard('asset') || 'all') as AssetType,
+    price: (safeQueryGuard('price') || 'all') as PriceType,
+    sort: (safeQueryGuard('price') || 'relevant') as SortType,
   });
 
   async function fetchAssets({
@@ -92,7 +92,12 @@ export const useFiltersStore = defineStore('filters', () => {
             icon: 'icons',
           }[newVal.asset],
         },
-        query: { ...route.query },
+        query: {
+          ...route.query,
+          asset: newVal.asset === 'all' ? undefined : newVal.asset,
+          price: newVal.price === 'all' ? undefined : newVal.price,
+          sort: newVal.sort === 'relevant' ? undefined : newVal.sort,
+        },
       });
 
       assets.data = [];

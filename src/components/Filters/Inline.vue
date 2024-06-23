@@ -19,11 +19,7 @@ watch(
   route,
   (newVal) => {
     if (newVal.name === 'type') {
-      const queryType = Array.isArray(newVal.params.type)
-        ? route.params.type[0]
-        : route.params.type;
-
-      resetList(queryType as string);
+      resetList(newVal.params.type as string);
     }
   },
   { deep: true, immediate: true }
