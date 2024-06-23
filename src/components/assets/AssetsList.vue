@@ -28,9 +28,12 @@ function getSrcSet(urls: Asset['urls']) {
       'w-full p-5',
     ]"
   >
-    <template v-if="!filterStore.assets.data.length">
-      <article v-for="i in 42" :key="i" class="animate-pulse !bg-gray-200" />
-    </template>
+    <article
+      v-if="!filterStore.assets.data.length"
+      v-for="i in 42"
+      :key="i"
+      class="animate-pulse !bg-gray-200"
+    />
 
     <article
       v-else
@@ -39,6 +42,7 @@ function getSrcSet(urls: Asset['urls']) {
       :class="
         filterStore.filters.asset === 'lottie' ? '!bg-white' : '!bg-gray-50'
       "
+      :title="assetItem.slug"
     >
       <picture v-if="filterStore.filters.asset !== 'lottie'">
         <source :srcset="getSrcSet(assetItem.urls)" type="image/png" />
