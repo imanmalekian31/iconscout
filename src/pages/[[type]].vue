@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const filterStore = useFiltersStore();
+const route = useRoute();
 
 const titles = {
   all: 'Design Assets',
@@ -24,6 +25,15 @@ useSeoMeta({
   ogDescription: pageDescription,
   ogImage: 'https://iconscout-iman.vercel.app/images/og.png',
 });
+
+useHead(() => ({
+  link: [
+    {
+      rel: 'canonical',
+      href: `https://iconscout-iman.vercel.app${route.path}`,
+    },
+  ],
+}));
 </script>
 
 <template>
