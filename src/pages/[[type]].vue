@@ -21,9 +21,13 @@ function pageDescription() {
 useSeoMeta({
   title: pageTitle,
   ogTitle: pageTitle,
+  twitterTitle: pageTitle,
   description: pageDescription,
   ogDescription: pageDescription,
+  twitterDescription: pageDescription,
   ogImage: 'https://iconscout-iman.vercel.app/images/og.png',
+  twitterImage: 'https://iconscout-iman.vercel.app/images/og.png',
+  twitterCard: 'summary_large_image',
 });
 
 useHead(() => ({
