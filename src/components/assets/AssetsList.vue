@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { ArrowDownTrayIcon } from '@heroicons/vue/24/outline';
+import { FolderPlusIcon } from '@heroicons/vue/24/solid';
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
 import { Vue3Lottie } from 'vue3-lottie';
 
+import { downloadAssetAPI } from '~/apis/asset';
 import type { Asset } from '~/types';
 
 const layoutStore = useLayoutStore();
@@ -16,6 +19,16 @@ function getSrcSet(urls: Asset['urls']) {
   return Object.values(urls)
     .map((value, idx) => `${value} ${idx + 1}x`)
     .join(', ');
+}
+
+function downloadIcon(uuid: string) {
+  downloadAssetAPI(uuid, 'svg').then((data) => {
+    const url = data.response.download.download_url;
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = url;
+    link.click();
+  });
 }
 </script>
 
@@ -39,15 +52,18 @@ function getSrcSet(urls: Asset['urls']) {
       v-else
       v-for="assetItem in filterStore.assets.data"
       :key="assetItem.id"
-      :class="
-        filterStore.filters.asset === 'lottie' ? '!bg-white' : '!bg-gray-50'
-      "
-      :title="assetItem.slug"
+      :class="[
+        'relative',
+        filterStore.filters.asset === 'lottie' ? '!bg-white' : '!bg-gray-50',
+      ]"
+      :title="assetItem.name"
+      @mouseenter="assetItem.hover = true"
+      @mouseleave="assetItem.hover = false"
     >
       <picture v-if="filterStore.filters.asset !== 'lottie'">
         <source :srcset="getSrcSet(assetItem.urls)" type="image/png" />
         <img
-          :alt="assetItem.slug"
+          :alt="assetItem.name"
           loading="lazy"
           :srcset="getSrcSet(assetItem.urls)"
         />
@@ -64,6 +80,34 @@ function getSrcSet(urls: Asset['urls']) {
         <ClientOnly v-else>
           <Vue3Lottie :animationLink="assetItem.urls.original" />
         </ClientOnly>
+      </template>
+
+      <template v-if="assetItem.hover">
+        <button
+          type="button"
+          class="absolute z-10 right-3 top-3 bg-gray-75 border border-gary-100 text-gray-650 p-1.5 rounded-lg hover:bg-gray-100 focus:outline-none"
+        >
+          <FolderPlusIcon class="size-6" aria-hidden="true" />
+        </button>
+
+        <button
+          type="button"
+          class="absolute z-10 right-3 bottom-3 bg-gray-75 border border-gary-100 text-gray-650 p-1.5 rounded-lg hover:bg-gray-100 focus:outline-none"
+          @click="downloadIcon(assetItem.uuid)"
+        >
+          <ArrowDownTrayIcon class="size-6" aria-hidden="true" />
+        </button>
+
+        <h2
+          :class="[
+            'absolute z-10 left-3 bottom-3 text-xs truncate text-gray-700',
+            ['all', 'icon'].includes(filterStore.filters.asset)
+              ? 'max-w-16'
+              : 'max-w-44',
+          ]"
+        >
+          {{ assetItem.name }}
+        </h2>
       </template>
     </article>
   </section>

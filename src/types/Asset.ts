@@ -38,6 +38,7 @@ export interface Asset {
   _score: number;
   urls: Urls | Thumb;
   color_codes: ColorCode[];
+  hover: boolean;
 }
 
 export interface Urls {
@@ -54,4 +55,16 @@ export interface Thumb {
 export interface ColorCode {
   decimal_color: number;
   color_id: number;
+}
+
+export interface DownloadAssetResponse {
+  download: DownloadAsset;
+  message: string;
+}
+
+export interface DownloadAsset {
+  url: string;
+  name: string;
+  download_url: string;
+  download_license_uuid: string | null;
 }

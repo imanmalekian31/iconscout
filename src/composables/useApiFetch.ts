@@ -1,6 +1,6 @@
 export function useApiFetch<T>(
   url: string,
-  options: Record<string, any>
+  options?: Record<string, any>
 ): Promise<T> {
   const RuntimeConfig = useRuntimeConfig();
 
@@ -8,6 +8,7 @@ export function useApiFetch<T>(
     baseURL: RuntimeConfig.public.apiBase,
     headers: {
       'Client-ID': RuntimeConfig.public.iconscoutClientId,
+      'Client-Secret': RuntimeConfig.public.iconscoutClientSecret,
     },
   });
 
