@@ -94,7 +94,6 @@ export const useFiltersStore = defineStore('filters', () => {
         },
         query: {
           ...route.query,
-          asset: newVal.asset === 'all' ? undefined : newVal.asset,
           price: newVal.price === 'all' ? undefined : newVal.price,
           sort: newVal.sort === 'relevant' ? undefined : newVal.sort,
         },
