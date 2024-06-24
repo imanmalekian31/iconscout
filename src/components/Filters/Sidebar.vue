@@ -59,7 +59,7 @@ const filters: SidebarOption[] = [
   >
     <div
       v-show="layoutStore.toggleSidebar"
-      class="hidden lg:block min-w-[260px] border-r border-[#EBEDF5] h-[calc(100vh-190px)] xl:h-[calc(100vh-130px)] sticky top-[190px] xl:top-[130px] bg-white"
+      class="hidden lg:block min-w-[260px] border-r border-gray-100 h-[calc(100vh-190px)] xl:h-[calc(100vh-130px)] sticky top-[190px] xl:top-[130px] bg-white"
     >
       <SwitchGroup
         v-if="filterStore.filters.asset === 'lottie'"
@@ -70,7 +70,7 @@ const filters: SidebarOption[] = [
         <Switch
           v-model="layoutStore.toggleDotLottie"
           :class="[
-            layoutStore.toggleDotLottie ? 'bg-[#24A8AF]' : 'bg-[#B4BAD6]',
+            layoutStore.toggleDotLottie ? 'bg-teal-500' : 'bg-blue-200',
             'relative inline-flex h-5 w-9 ml-auto flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none',
           ]"
         >

@@ -20,7 +20,7 @@ const filterStore = useFiltersStore();
         }[filterStore.filters.asset]
       }}
     </h1>
-    <div class="text-sm text-[#5A607D] truncate">
+    <div class="text-sm text-gray-600 truncate">
       {{ filterStore.assets.count.toLocaleString() }}
       {{ ['all', 'icon'].includes(filterStore.filters.asset) ? '2D' : '3D' }}s
       exclusively selected by our designer community.

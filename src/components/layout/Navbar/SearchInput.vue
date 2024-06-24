@@ -3,8 +3,8 @@ import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
 </script>
 
 <template>
-  <div class="flex items-center p-2 rounded-md shadow-sm bg-[#EBEDF5]">
-    <div class="border-r border-[#B4BAD6]">
+  <div class="flex items-center p-2 rounded-md shadow-sm bg-gray-100">
+    <div class="border-r border-blue-200">
       <label for="resolution" class="sr-only">resolution</label>
       <select
         id="resolution"
@@ -21,13 +21,13 @@ import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
         <input
           type="search"
           name="search"
-          class="block w-full truncate bg-transparent border-0 py-1 text-gray-900 focus:ring-0 placeholder:text-[#2E334C] text-sm"
+          class="block w-full truncate bg-transparent border-0 py-1 text-gray-900 focus:ring-0 placeholder:text-gray-900 text-sm"
           placeholder="Search from 8 Million+ assets"
         />
       </div>
       <button
         type="submit"
-        class="flex items-center justify-center size-8 rounded bg-[#F5F6FA] hover:bg-[#D8DBEB]"
+        class="flex items-center justify-center size-8 rounded bg-gray-75 hover:bg-gray-150"
       >
         <SvgoReverseSearchPicture filled class="!mb-0 text-lg" />
       </button>

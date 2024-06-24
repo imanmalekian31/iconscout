@@ -28,12 +28,12 @@ watch(
 
 <template>
   <div
-    class="bg-gray-50 border-b border-[#EBEDF5] z-30 sticky top-[140px] xl:top-20 px-6 hidden lg:block"
+    class="bg-gray-50 border-b border-gray-100 z-30 sticky top-[140px] xl:top-20 px-6 hidden lg:block"
   >
     <div class="flex items-center">
       <div
         :class="[
-          'flex justify-between flex-grow mr-6 border-r border-[#EBEDF5] cursor-pointer',
+          'flex justify-between flex-grow mr-6 border-r border-gray-100 cursor-pointer',
           layoutStore.toggleSidebar ? 'max-w-[236px]' : 'max-w-[120px]',
         ]"
         @click="layoutStore.toggleSidebar = !layoutStore.toggleSidebar"
