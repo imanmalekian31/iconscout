@@ -49,7 +49,6 @@ export interface Urls {
 
 export interface Thumb {
   thumb: string;
-  original?: string;
 }
 
 export interface ColorCode {

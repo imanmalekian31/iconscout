@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import { ArrowDownTrayIcon } from '@heroicons/vue/24/outline';
 import { FolderPlusIcon } from '@heroicons/vue/24/solid';
-import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
-import { Vue3Lottie } from 'vue3-lottie';
 
 import { downloadAssetAPI } from '~/apis/asset';
 import type { Asset } from '~/types';
-
-const layoutStore = useLayoutStore();
 
 interface Props {
   asset: Asset & { hover: boolean };
@@ -43,23 +39,20 @@ function downloadIcon(uuid: string) {
     @mouseenter="asset.hover = true"
     @mouseleave="asset.hover = false"
   >
-    <picture v-if="asset.asset !== 'lottie'">
+    <template v-if="'thumb' in asset.urls">
+      <video
+        v-if="asset.asset === 'lottie'"
+        :src="asset.urls.thumb"
+        autoplay
+        loop
+        muted
+      />
+      <img v-else :alt="asset.name" loading="lazy" :src="asset.urls.thumb" />
+    </template>
+    <picture v-else>
       <source :srcset="getSrcSet(asset.urls)" type="image/png" />
       <img :alt="asset.name" loading="lazy" :srcset="getSrcSet(asset.urls)" />
     </picture>
-
-    <template v-else-if="'original' in asset.urls">
-      <DotLottieVue
-        v-if="layoutStore.toggleDotLottie"
-        style="height: 500px; width: 500px"
-        autoplay
-        loop
-        :src="asset.urls.original"
-      />
-      <ClientOnly v-else>
-        <Vue3Lottie :animationLink="asset.urls.original" />
-      </ClientOnly>
-    </template>
 
     <template v-if="asset.hover">
       <button
@@ -130,11 +123,11 @@ function downloadIcon(uuid: string) {
     align-items: center;
     width: 100%;
     height: 100%;
+  }
 
-    img {
-      @apply max-h-full;
-      @apply transition-transform duration-200 ease-in-out;
-    }
+  img {
+    @apply max-h-full;
+    @apply transition-transform duration-200 ease-in-out;
   }
 
   &:hover {
