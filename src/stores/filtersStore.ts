@@ -36,7 +36,7 @@ export const useFiltersStore = defineStore('filters', () => {
     query: safeQueryGuard('query') || undefined,
     asset: (safeQueryGuard('asset') || 'all') as AssetType,
     price: (safeQueryGuard('price') || 'all') as PriceType,
-    sort: (safeQueryGuard('price') || 'relevant') as SortType,
+    sort: (safeQueryGuard('sort') || 'relevant') as SortType,
   });
 
   async function fetchAssets({
