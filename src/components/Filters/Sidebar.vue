@@ -9,43 +9,10 @@ import {
 } from '@headlessui/vue';
 import { ChevronDownIcon } from '@heroicons/vue/24/outline';
 
-import type { SidebarOption } from '~/types';
+import { filters } from './constants';
 
 const layoutStore = useLayoutStore();
 const filterStore = useFiltersStore();
-
-const filters: SidebarOption[] = [
-  {
-    name: 'asset',
-    title: 'Asset Type',
-    options: [
-      { id: 'all', title: 'All Assets' },
-      { id: 'lottie', title: 'Lottie Animations' },
-      { id: '3d', title: '3D Illustrations' },
-      { id: 'illustration', title: 'Illustrations' },
-      { id: 'icon', title: 'Icons' },
-    ],
-  },
-  {
-    name: 'price',
-    title: 'Price',
-    options: [
-      { id: 'free', title: 'Free' },
-      { id: 'premium', title: 'Premium' },
-      { id: 'all', title: 'All' },
-    ],
-  },
-  {
-    name: 'sort',
-    title: 'Sort by',
-    options: [
-      { id: 'popular', title: 'Popular' },
-      { id: 'latest', title: 'Recent' },
-      { id: 'featured', title: 'Featured' },
-      { id: 'relevant', title: 'Relevant' },
-    ],
-  },
-];
 </script>
 
 <template>

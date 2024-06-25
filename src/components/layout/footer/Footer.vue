@@ -68,6 +68,7 @@ import { links } from './constants';
               >
                 <img
                   src="/images/app-store.png"
+                  loading="lazy"
                   width="120"
                   height="40"
                   alt="App Store"
@@ -80,6 +81,7 @@ import { links } from './constants';
               >
                 <img
                   src="/images/play-store.png"
+                  loading="lazy"
                   width="130"
                   height="40"
                   alt="Google Play Store"
@@ -151,7 +153,13 @@ import { links } from './constants';
             <LockClosedIcon class="text-yellow-500 size-5 mr-1" />
             <span class="font-extralight"> Secure Payments </span>
           </div>
-          <img src="/images/stripe.png" width="84" height="40" alt="Stripe" />
+          <img
+            src="/images/stripe.png"
+            loading="lazy"
+            width="84"
+            height="40"
+            alt="Stripe"
+          />
         </div>
       </div>
     </div>

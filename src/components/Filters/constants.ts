@@ -1,4 +1,4 @@
-import type { Tab } from '~/types';
+import type { SidebarOption, Tab } from '~/types';
 
 export const IdToPath = {
   all: '',
@@ -33,5 +33,38 @@ export const TABS: Tab[] = [
     id: 'icon',
     name: 'Icons',
     path: IdToPath.icon,
+  },
+];
+
+export const filters: SidebarOption[] = [
+  {
+    name: 'asset',
+    title: 'Asset Type',
+    options: [
+      { id: 'all', title: 'All Assets' },
+      { id: 'lottie', title: 'Lottie Animations' },
+      { id: '3d', title: '3D Illustrations' },
+      { id: 'illustration', title: 'Illustrations' },
+      { id: 'icon', title: 'Icons' },
+    ],
+  },
+  {
+    name: 'price',
+    title: 'Price',
+    options: [
+      { id: 'free', title: 'Free' },
+      { id: 'premium', title: 'Premium' },
+      { id: 'all', title: 'All' },
+    ],
+  },
+  {
+    name: 'sort',
+    title: 'Sort by',
+    options: [
+      { id: 'popular', title: 'Popular' },
+      { id: 'latest', title: 'Recent' },
+      { id: 'featured', title: 'Featured' },
+      { id: 'relevant', title: 'Relevant' },
+    ],
   },
 ];
