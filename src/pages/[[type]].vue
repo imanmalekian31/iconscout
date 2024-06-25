@@ -43,9 +43,9 @@ useHead(() => ({
 <template>
   <AssetsInfo />
   <main>
-    <FiltersInline />
+    <AssetsFiltersInline />
     <div class="flex">
-      <FiltersSidebar />
+      <AssetsFiltersSidebar />
       <div
         :class="[
           'flex flex-col w-full',
