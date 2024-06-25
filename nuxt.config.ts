@@ -18,12 +18,25 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxt/eslint', '@pinia/nuxt', 'nuxt-svgo'],
+  modules: ['@nuxt/eslint', '@pinia/nuxt', 'nuxt-svgo', '@nuxtjs/sitemap'],
   runtimeConfig: {
     public: {
       apiBase: '',
       iconscoutClientId: '',
       iconscoutClientSecret: '',
     },
+  },
+
+  sitemap: {
+    urls: [
+      '',
+      '/3d-illustrations',
+      '/animations',
+      '/illustrations',
+      '/icons',
+    ].map((path) => ({
+      loc: path,
+      changefreq: 'daily',
+    })),
   },
 });
