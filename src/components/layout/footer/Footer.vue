@@ -1,59 +1,7 @@
 <script setup>
 import { HeartIcon, LockClosedIcon } from '@heroicons/vue/24/solid';
 
-const footerLinks = [
-  {
-    title: 'Graphic Resources',
-    list: [
-      'Free Icons',
-      'Free Emoji Icons',
-      'Free Logo Icons',
-      'iOS Icons',
-      'Sticker Icons',
-      'Gradient Icons',
-      'Curated Bundle',
-      'Calendar of Festival',
-      'Free Assets of the day',
-      'Explore Design Assets',
-    ],
-  },
-  {
-    title: 'Products',
-    list: [
-      'Unicon Icon Font',
-      'Color editor',
-      'Apps & Plugins',
-      'Hire designers',
-      'IconScout API',
-      'Top Illustrations',
-      'Top 3D Assets',
-      'Reverse Image Search',
-      'Unicon Plugin for Figma',
-    ],
-  },
-  {
-    title: 'Company',
-    list: [
-      'Blog',
-      'About',
-      'Access features',
-      'Sell on IconScout',
-      'Startup program',
-      "We're hiring",
-    ],
-  },
-  {
-    title: 'Legal',
-    list: [
-      'Terms of use',
-      'Privacy policy',
-      'License agreement',
-      'Contributor terms',
-      'Support center',
-      'Join discord community',
-    ],
-  },
-];
+import { links } from './constants';
 </script>
 
 <template>
@@ -77,7 +25,7 @@ const footerLinks = [
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6"
         >
-          <div v-for="col in footerLinks" class="px-3" :key="col.title">
+          <div v-for="col in links" class="px-3" :key="col.title">
             <h2 class="font-bold mb-2 text-gray-900">{{ col.title }}</h2>
             <ul class="list-none p-0 text-gray-800">
               <li v-for="list in col.list" :key="list" class="mb-2">

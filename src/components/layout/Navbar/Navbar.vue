@@ -7,7 +7,7 @@ import {
 </script>
 
 <template>
-  <header class="sticky top-0 z-30 bg-white">
+  <header class="sticky top-0 z-40 bg-white">
     <nav class="shadow-lg py-4 px-6">
       <ul class="flex items-center my-0 w-full list-none p-0">
         <li class="lg:hidden mr-4">
@@ -64,7 +64,7 @@ import {
             Login
           </button>
           <button
-            class="size-10 md:w-auto md:h-auto rounded-full flex items-center justify-center px-4 py-2 bg-blue-500 text-white"
+            class="size-10 md:w-auto md:h-auto rounded-full flex items-center justify-center px-4 py-2 bg-blue-500 text-white hover:bg-blue-600"
             aria-label="Signup"
           >
             <span class="md:hidden flex items-center">
