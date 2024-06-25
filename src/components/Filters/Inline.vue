@@ -10,16 +10,12 @@ const layoutStore = useLayoutStore();
 const filterStore = useFiltersStore();
 const route = useRoute();
 
-function resetList(type: string) {
-  filterStore.filters.asset =
-    TABS.find((tab) => tab.path === type)?.id || 'all';
-}
-
 watch(
   route,
   (newVal) => {
     if (newVal.name === 'type') {
-      resetList(newVal.params.type as string);
+      filterStore.filters.asset =
+        TABS.find((tab) => tab.path === newVal.params.type)?.id || 'all';
     }
   },
   { deep: true, immediate: true }

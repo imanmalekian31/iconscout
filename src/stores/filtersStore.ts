@@ -8,6 +8,7 @@ import type {
 } from '~/types';
 
 interface Filters {
+  query?: string;
   asset: AssetType;
   sort: SortType;
   price: PriceType;
@@ -32,6 +33,7 @@ export const useFiltersStore = defineStore('filters', () => {
   const loading = ref(false);
   const page = ref(0);
   const filters = ref<Filters>({
+    query: undefined,
     asset: (safeQueryGuard('asset') || 'all') as AssetType,
     price: (safeQueryGuard('price') || 'all') as PriceType,
     sort: (safeQueryGuard('price') || 'relevant') as SortType,
@@ -94,6 +96,7 @@ export const useFiltersStore = defineStore('filters', () => {
         },
         query: {
           ...route.query,
+          query: newVal.query || undefined,
           price: newVal.price === 'all' ? undefined : newVal.price,
           sort: newVal.sort === 'relevant' ? undefined : newVal.sort,
         },

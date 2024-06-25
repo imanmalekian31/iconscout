@@ -59,7 +59,7 @@ import {
         </li>
         <li class="ml-auto flex space-x-3">
           <button
-            class="hidden md:block rounded-full border border-gray-200 px-4 py-2"
+            class="hidden md:block rounded-full border border-gray-200 px-4 py-2 hover:bg-gray-100"
           >
             Login
           </button>

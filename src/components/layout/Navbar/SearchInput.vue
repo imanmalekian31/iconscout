@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
+
+const filterStore = useFiltersStore();
+const query = ref();
+
+function handleQuery() {
+  filterStore.filters.query = query.value;
+}
 </script>
 
 <template>
@@ -15,10 +22,11 @@ import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
         <option>2D</option>
       </select>
     </div>
-    <form class="flex items-center w-full ml-2">
+    <form class="flex items-center w-full ml-2" @submit.prevent="handleQuery">
       <div class="flex items-center w-full xl:w-auto">
         <MagnifyingGlassIcon class="size-5 text-gray-900" aria-hidden="true" />
         <input
+          v-model="query"
           type="search"
           name="search"
           class="block w-full truncate bg-transparent border-0 py-1 text-gray-900 focus:ring-0 placeholder:text-gray-900 text-sm"
