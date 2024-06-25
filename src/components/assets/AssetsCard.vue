@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ArrowDownTrayIcon } from '@heroicons/vue/24/outline';
 import { FolderPlusIcon } from '@heroicons/vue/24/solid';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 import { downloadAssetAPI } from '~/apis/asset';
 import type { Asset } from '~/types';
@@ -18,12 +20,18 @@ function getSrcSet(urls: Asset['urls']) {
 }
 
 function downloadIcon(uuid: string) {
-  downloadAssetAPI(uuid, 'svg').then((data) => {
+  const downloadPromise = downloadAssetAPI(uuid, 'svg').then((data) => {
     const url = data.response.download.download_url;
     const link = document.createElement('a');
     link.href = url;
     link.download = url;
     link.click();
+  });
+
+  toast.promise(downloadPromise, {
+    pending: 'Downloading...',
+    success: 'Download will be started',
+    error: 'Download failed',
   });
 }
 </script>

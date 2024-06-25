@@ -22,7 +22,8 @@
     "pinia": "^2.1.7",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3",
-    "vue3-lottie": "^3.3.0"
+    "vue3-lottie": "^3.3.0",
+    "vue3-toastify": "^0.2.1"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
