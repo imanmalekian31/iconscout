@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Host: iconscout-iman.vercel.app
+Sitemap: https://iconscout-iman.vercel.app/sitemap.xml
