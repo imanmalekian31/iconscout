@@ -8,35 +8,43 @@ function loadMore() {
 </script>
 
 <template>
-  <section
-    :class="[
-      ['icon', 'all'].includes(filterStore.filters.asset)
-        ? 'iconContainer'
-        : 'illustrationContainer',
-      'w-full p-5',
-    ]"
-  >
-    <article
-      v-if="!filterStore.assets.data.length"
-      v-for="i in 42"
-      :key="i"
+  <section class="relative">
+    <div
       :class="[
         ['icon', 'all'].includes(filterStore.filters.asset)
-          ? 'min-w-[120px] md:min-w-[140px] min-h-[120px] md:min-h-[140px]'
-          : 'h-[13.125rem]',
-        'animate-pulse rounded-lg !bg-gray-200',
+          ? 'iconContainer'
+          : 'illustrationContainer',
+        'w-full p-5',
       ]"
+    >
+      <article
+        v-if="!filterStore.assets.data.length"
+        v-for="i in 42"
+        :key="i"
+        :class="[
+          ['icon', 'all'].includes(filterStore.filters.asset)
+            ? 'min-w-[120px] md:min-w-[140px] min-h-[120px] md:min-h-[140px]'
+            : 'h-[13.125rem]',
+          'animate-pulse rounded-lg !bg-gray-200',
+        ]"
+      />
+
+      <AssetsCard
+        v-for="asset in filterStore.assets.data"
+        :key="asset.id"
+        :asset="asset"
+      />
+    </div>
+
+    <AssetsAssetEndScroll
+      v-if="filterStore.page > 2 && !filterStore.loading"
+      :assetType="filterStore.filters.asset"
     />
 
-    <AssetsCard
-      v-for="asset in filterStore.assets.data"
-      :key="asset.id"
-      :asset="asset"
-    />
+    <div v-else class="flex items-center justify-center my-10" ref="observer">
+      <SvgoSpinner class="text-blue-500 animate-spin text-7xl" />
+    </div>
   </section>
-  <div class="flex items-center justify-center my-10" ref="observer">
-    <SvgoSpinner class="text-blue-500 animate-spin text-7xl" />
-  </div>
 </template>
 
 <style scoped>
