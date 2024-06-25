@@ -2,7 +2,7 @@
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
 
 const filterStore = useFiltersStore();
-const query = ref();
+const query = ref(filterStore.filters.query);
 
 function handleQuery() {
   filterStore.filters.query = query.value;

@@ -33,7 +33,7 @@ export const useFiltersStore = defineStore('filters', () => {
   const loading = ref(false);
   const page = ref(0);
   const filters = ref<Filters>({
-    query: undefined,
+    query: safeQueryGuard('query') || '',
     asset: (safeQueryGuard('asset') || 'all') as AssetType,
     price: (safeQueryGuard('price') || 'all') as PriceType,
     sort: (safeQueryGuard('price') || 'relevant') as SortType,
