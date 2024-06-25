@@ -116,14 +116,24 @@ const footerLinks = [
                 rel="nofollow noopener"
                 target="_blank"
               >
-                <img src="/images/app-store.png" alt="app store" />
+                <img
+                  src="/images/app-store.png"
+                  width="120"
+                  height="40"
+                  alt="App Store"
+                />
               </a>
               <a
                 href="https://lottiefiles.com/android"
                 rel="nofollow noopener"
                 target="_blank"
               >
-                <img src="/images/play-store.png" alt="play store" />
+                <img
+                  src="/images/play-store.png"
+                  width="130"
+                  height="40"
+                  alt="Google Play Store"
+                />
               </a>
             </div>
             <h2 class="font-bold mt-5 mb-3">Follow us</h2>
@@ -186,7 +196,7 @@ const footerLinks = [
             <LockClosedIcon class="text-yellow-500 size-5 mr-1" />
             <span class="font-extralight"> Secure Payments </span>
           </div>
-          <img src="/images/stripe.png" alt="stripe" />
+          <img src="/images/stripe.png" width="84" height="40" alt="Stripe" />
         </div>
       </div>
     </div>
