@@ -63,7 +63,7 @@ const footerLinks = [
         class="flex flex-wrap justify-center md:justify-between items-center py-12 border-b border-gray-300"
       >
         <div class="flex items-center text-black">
-          <NuxtLink to="/">
+          <NuxtLink to="/" aria-label="Logo">
             <SvgoLogo filled class="!mb-0 !w-48 !h-11" />
           </NuxtLink>
           <span class="ml-4 text-base">Design Resource Marketplace</span>
@@ -96,6 +96,7 @@ const footerLinks = [
                 href="https://iconscout.com/desktop-app/for-mac"
                 rel="nofollow noopener"
                 target="_blank"
+                aria-label="Apple Store"
                 class="flex items-center justify-center px-4 py-2.5 text-xl"
               >
                 <SvgoApple class="text-gray-650 !mb-0" />
@@ -104,6 +105,7 @@ const footerLinks = [
                 href="https://iconscout.com/desktop-app/for-windows"
                 rel="nofollow noopener"
                 target="_blank"
+                aria-label="Windows Store"
                 class="flex items-center justify-center px-4 py-2.5 text-xl"
               >
                 <SvgoWindow class="text-gray-650 !mb-0" />
@@ -144,6 +146,7 @@ const footerLinks = [
                 href="https://www.facebook.com/iconscout"
                 rel="nofollow noopener"
                 target="_blank"
+                aria-label="Facebook"
                 class="p-2.5 flex items-center justify-center"
               >
                 <SvgoFacebook class="text-gray-650 !mb-0" />
@@ -152,6 +155,7 @@ const footerLinks = [
                 href="https://www.instagram.com/iconscout"
                 rel="nofollow noopener"
                 target="_blank"
+                aria-label="Instagram"
                 class="p-2.5 flex items-center justify-center"
               >
                 <SvgoInstagram class="text-gray-650 !mb-0" />
@@ -160,6 +164,7 @@ const footerLinks = [
                 href="https://twitter.com/iconscout"
                 rel="nofollow noopener"
                 target="_blank"
+                aria-label="Twitter"
                 class="p-2.5 flex items-center justify-center"
               >
                 <SvgoTwitter class="text-gray-650 !mb-0" />
@@ -168,6 +173,7 @@ const footerLinks = [
                 href="https://www.linkedin.com/company/iconscout"
                 rel="nofollow noopener"
                 target="_blank"
+                aria-label="Linkedin"
                 class="p-2.5 flex items-center justify-center"
               >
                 <SvgoLinkedin class="text-gray-650 !mb-0" />
@@ -176,6 +182,7 @@ const footerLinks = [
                 href="https://dribbble.com/iconscout"
                 rel="nofollow noopener"
                 target="_blank"
+                aria-label="Dribbble"
                 class="p-2.5 flex items-center justify-center"
               >
                 <SvgoDeribbble class="text-gray-650 !mb-0" />

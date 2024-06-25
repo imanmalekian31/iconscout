@@ -19,7 +19,7 @@ import {
           </button>
         </li>
         <li class="mr-4">
-          <NuxtLink to="/">
+          <NuxtLink to="/" aria-label="Logo">
             <SvgoLogo filled class="!mb-0 !w-48 !h-11" />
           </NuxtLink>
         </li>
