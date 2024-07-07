@@ -36,7 +36,7 @@ export interface Asset {
   slug: string;
   price: number;
   _score: number;
-  urls: Urls | Thumb;
+  urls: Urls | Thumb | LottieUrls;
   color_codes: ColorCode[];
   hover: boolean;
 }
@@ -49,6 +49,15 @@ export interface Urls {
 
 export interface Thumb {
   thumb: string;
+}
+
+export interface LottieUrls extends Thumb {
+  preview: string;
+  original: string;
+  gif: string;
+  mp4: string;
+  lottie: string;
+  preview_image: string;
 }
 
 export interface ColorCode {
