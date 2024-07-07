@@ -6,7 +6,9 @@ import type {
 } from '~/types';
 
 export function fetchAssetsListAPI(params: FetchAssetsParams) {
-  return useApiFetch<FetchResponse<AssetResponse>>('/v3/search', {
+  const url = params.asset === 'lottie' ? '/v2/search' : '/v3/search';
+
+  return useApiFetch<FetchResponse<AssetResponse>>(url, {
     params,
   });
 }
