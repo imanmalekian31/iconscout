@@ -32,6 +32,7 @@ export const useFiltersStore = defineStore('filters', () => {
   });
   const loading = ref(false);
   const page = ref(0);
+  const isEndPage = ref(false);
   const filters = ref<Filters>({
     query: safeQueryGuard('query') || undefined,
     asset: (safeQueryGuard('asset') || 'all') as AssetType,
@@ -50,17 +51,21 @@ export const useFiltersStore = defineStore('filters', () => {
     loading.value = true;
 
     try {
-      const data = await fetchAssetsListAPI({
+      const res = await fetchAssetsListAPI({
         page,
         per_page: per_page || PER_PAGE[asset!],
         asset: asset === 'all' ? undefined : asset,
-        price: price === 'all' ? undefined : price,
+        price:
+          asset === 'lottie' ? 'free' : price === 'all' ? undefined : price,
         sort,
         query,
       });
 
-      assets.data.push(...data.response.items.data);
-      assets.count = data.response.items.total;
+      const { data, total, to } = res.response.items;
+
+      assets.data.push(...data);
+      assets.count = total;
+      isEndPage.value = to === total;
     } catch (error) {
       console.error('Error loading assets:', error);
     } finally {
@@ -104,6 +109,7 @@ export const useFiltersStore = defineStore('filters', () => {
 
       assets.data = [];
       page.value = 1;
+      isEndPage.value = false;
 
       fetchAssets({
         ...newVal,
@@ -120,5 +126,6 @@ export const useFiltersStore = defineStore('filters', () => {
     fetchNextPage,
     page,
     loading,
+    isEndPage,
   };
 });

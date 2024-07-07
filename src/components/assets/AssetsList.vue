@@ -41,7 +41,11 @@ function loadMore() {
       :assetType="filterStore.filters.asset"
     />
 
-    <div v-else class="flex items-center justify-center my-10" ref="observer">
+    <div
+      v-else-if="!filterStore.isEndPage"
+      class="flex items-center justify-center my-10"
+      ref="observer"
+    >
       <SvgoSpinner class="text-blue-500 animate-spin text-7xl" />
     </div>
   </section>
