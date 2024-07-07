@@ -143,7 +143,7 @@ import { links } from './constants';
       </div>
     </div>
     <div class="bg-gray-150 text-gray-800 py-6">
-      <div class="container mx-auto flex justify-between items-center">
+      <div class="lg:container mx-auto px-3 flex justify-between items-center">
         <p class="text-sm mb-0">
           &copy; {{ new Date().getFullYear() }} Design Barn Inc. Made with
           <HeartIcon class="size-4 inline text-red-700" /> in India
