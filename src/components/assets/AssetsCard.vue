@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ArrowDownTrayIcon } from '@heroicons/vue/24/outline';
 import { FolderPlusIcon } from '@heroicons/vue/24/solid';
+import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
@@ -12,6 +13,8 @@ interface Props {
 }
 
 defineProps<Props>();
+
+const layoutStore = useLayoutStore();
 
 function getSrcSet(urls: Asset['urls']) {
   return Object.values(urls)
@@ -47,20 +50,21 @@ function downloadIcon(uuid: string) {
     @mouseenter="asset.hover = true"
     @mouseleave="asset.hover = false"
   >
-    <template v-if="'thumb' in asset.urls">
-      <video
-        v-if="asset.asset === 'lottie'"
-        :src="asset.urls.thumb"
-        autoplay
-        loop
-        muted
-      />
-      <img v-else :alt="asset.name" loading="lazy" :src="asset.urls.thumb" />
-    </template>
-    <picture v-else>
+    <picture v-if="asset.asset !== 'lottie'">
       <source :srcset="getSrcSet(asset.urls)" type="image/png" />
       <img :alt="asset.name" loading="lazy" :srcset="getSrcSet(asset.urls)" />
     </picture>
+
+    <template v-else-if="'original' in asset.urls">
+      <DotLottieVue
+        v-if="layoutStore.toggleDotLottie"
+        autoplay
+        loop
+        :src="asset.urls.lottie"
+      ></DotLottieVue>
+      <lottie-player v-else autoplay loop :src="asset.urls.original">
+      </lottie-player>
+    </template>
 
     <template v-if="asset.hover">
       <button

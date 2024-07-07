@@ -7,6 +7,11 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en',
       },
+      script: [
+        {
+          src: '/js/lib/lottie-player.js',
+        },
+      ],
     },
   },
   css: ['~/assets/css/main.css'],
@@ -38,5 +43,10 @@ export default defineNuxtConfig({
       loc: path,
       changefreq: 'daily',
     })),
+  },
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => ['lottie-player'].includes(tag),
+    },
   },
 });
